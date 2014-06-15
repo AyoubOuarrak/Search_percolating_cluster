@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Definizione}{2}
+\contentsline {section}{\numberline {2}Individuazione cluster percolante}{2}
+\contentsline {subsection}{\numberline {2.1}Generazione matrice}{2}
+\contentsline {subsection}{\numberline {2.2}Algoritmo "label"}{2}
+\contentsline {section}{\numberline {3}Soglia critica}{4}
+\contentsline {subsection}{\numberline {3.1}algoritmo per il calcolo della soglia critica}{5}
+\contentsline {section}{\numberline {4}Reduced average cluster size (RACS)}{6}
+\contentsline {subsection}{\numberline {4.1}Algoritmo per calcolo del valore RACS}{7}
+\contentsline {subsection}{\numberline {4.2}Valori di p1, p2, p3}{8}
+\contentsline {subsection}{\numberline {4.3}Algoritmo per il calcolo dei valori di p1, p2 e p3}{9}
+\contentsline {section}{\numberline {5}Calcolo errore e varianza}{11}
+\contentsline {section}{\numberline {6}Algoritmo HK}{12}

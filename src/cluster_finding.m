@@ -1,6 +1,6 @@
 function [found size clusters]= cluster_finding(N, p)
   % found : boolean value that say if we found the cluster
-  % size : integer value that contain the number of clusters
+  % size : array that contain the size of clusters
   % clusters : return the clusters tha we found
 	 
   % N : order matrix to generate
@@ -10,7 +10,7 @@ function [found size clusters]= cluster_finding(N, p)
   randMatrix = rand(N);
   % coloring the site with probability p
   M = zeros(N);
-  M(find(randMatrix < p)) = 1;
+  M(randMatrix < p) = 1;
   
   clusters = zeros(N);
   size = [];
@@ -34,7 +34,7 @@ function [found size clusters]= cluster_finding(N, p)
           clusters(stack(top)) = label;
         end
         
-        if(current < (N^2 - N +1) && M(current +N) && clusters(current +N) ==0)
+        if(current < (N^2 - N +1) && M(current +N) && clusters(current +N) == 0)
           top = top +1;
           stack(top) = current + N;
           clusters(stack(top)) = label;
@@ -46,7 +46,7 @@ function [found size clusters]= cluster_finding(N, p)
           clusters(stack(top)) = label;
         end
         
-        if(mod(current, N)~=1 && M(current - 1) && clusters(current -1)==0)
+        if(mod(current, N)~=1 && M(current - 1) && clusters(current -1) == 0)
           top = top + 1;
           stack(top) = current - 1;
           clusters(stack(top)) = label;
@@ -60,9 +60,11 @@ function [found size clusters]= cluster_finding(N, p)
       if(length(find(clusters(:, N))) > 0)
         found = 1;
       end
-      if nargout == 1
-        return
-      end
+    %  if nargout == 1
+        %return
+      %end
+      
     end
-  end %for
+    
+  end 
 end

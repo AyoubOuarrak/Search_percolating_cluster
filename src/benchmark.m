@@ -1,30 +1,20 @@
-function res = benchmark()
-  time1 = [];
-  time2 = [];
-  avgT1 = [];
-  avgT2 = [];
-  x = [];
-  for p = 0.1 : 0.05 : 1
-    for N = 50 : 25 : 200
-        
-      %first algorithm
-      tic;
-      cluster_finding(N, p);
-      time1 = [time1 toc];
-      
-      %second algorithm
-      tic;
-      HK_algorithm(N, p);
-      time2 = [time2 toc];
-    end
-    avgT1 = [avgT1 mean(time1)];
-    avgT2 = [avgT2 mean(time2)];
-    x = [x (p)];
-    time1 = [];
-    time2 = [];
+function res = Benchmark() 
+  index  = 1;
+  for N = 10 : 20 : 1000
+    for attempts = 1 : 5
+      tic, Cluster_finding_HK(N, 0.5);   timeHK(attempts) = toc;
+      tic, cluster_finding(N, 0.5); timeLabel(attempts) = toc;
+    end 
+    timeHKerr(index) = mean(timeHK);
+    timeLabelErr(index) = mean(timeLabel);
+    
+    errHK(index) = std(timeHK) / (sqrt(length(timeHK)));
+    errLabel(index) = std(timeLabel) / (sqrt(length(timeLabel)));
+    index
+    index = index + 1;
   end
-  plot(x, avgT1, x, avgT2);
-  title('Benchmark');
-  xlabel('Probability');
-  legend('Labeling algorithm', 'HK algorithm');
+  L = 10 : 20 : 1000;
+  errorbar(L, timeLabelErr, errLabel, 'blue');
+  hold on
+  errorbar(L, timeHKerr, errHK, 'red'); 
 end
